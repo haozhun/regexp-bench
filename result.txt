@@ -1,0 +1,37 @@
+Note: re2j is java implementation (DFA only), re2-java is jni. They can't handle all test cases (look-behind, look-ahead, possessive). Therefore the blanks.
+
+(found)  (patternName)  Mode           java    java w/ conv            joni          re2j    re2-java
+   true              x  avgt        198.275         297.753         204.257       926.758     495.022    ns/op
+   true          .*x.*  avgt        474.203         647.321         469.579      4700.004     571.545    ns/op
+   true        ^.*x.*$  avgt        331.469         415.691         330.802      1938.508     362.634    ns/op
+   true      x|y|z|...  avgt        321.629         408.843        1338.924     15127.820     380.522    ns/op
+   true  ^(x|y|z|...)$  avgt        386.794         502.509        1392.641      3183.405     384.869    ns/op
+   true         [0-9]+  avgt        188.988         282.089         389.062      1421.324     343.058    ns/op
+   true         [^0-9]  avgt        115.530         206.279         175.237       642.160     365.962    ns/op
+   true     ^https?://  avgt        160.263         263.867         218.284       936.334     415.840    ns/op
+   true      extract 0  avgt        279.249         384.619         600.420      1697.406     403.280    ns/op
+   true      extract 1  avgt        938.131        1242.727         703.586      8414.430     824.069    ns/op
+   true      extract 2  avgt        541.250         692.494        1215.389      3775.874     449.749    ns/op
+   true      extract 3  avgt       1732.642        1755.344        2242.102     17806.031     682.137    ns/op
+   true     extract 3b  avgt       1712.718        2006.131        5652.097     32574.339     938.928    ns/op
+   true     extract a1  avgt       1870.788        2213.082        9198.998                              ns/op
+   true     extract a2  avgt       2200.273        2543.858       10007.300                              ns/op
+   true     extract a3  avgt       1673.688        1900.895        3610.686                              ns/op
+   true      complex 1  avgt        907.536        1104.822        3114.261     12235.154     619.852    ns/op
+   true      complex 2  avgt       6019.390        6339.453        5284.317     31784.965    1384.164    ns/op
+   true      complex 3  avgt       4318.283        4437.492        5976.986                              ns/op
+   true     complex 3b  avgt       4462.074        4622.603        6956.891     12773.479     586.150    ns/op
+   true      complex 4  avgt       9774.774       11655.040       23440.454                              ns/op
+  false              x  avgt        206.131         326.510         156.575       222.315     481.467    ns/op
+  false          .*x.*  avgt       8830.231        8934.608         156.345      4375.514     577.804    ns/op
+  false        ^.*x.*$  avgt        262.734         354.947          84.627      1389.921     361.271    ns/op
+  false        a.*a.*i  avgt  224877579.600   215946753.400   141077899.500    119488.793    3967.607    ns/op
+  false      x|y|z|...  avgt        989.913        1101.130        5742.835     14060.511     368.908    ns/op
+  false  ^(x|y|z|...)$  avgt        485.019         607.400         150.624      2356.656     337.118    ns/op
+  false         [0-9]+  avgt        188.961         284.376         140.610      1045.595     395.365    ns/op
+  false         [^0-9]  avgt        171.617         255.902         313.815       883.474     400.622    ns/op
+  false     ^https?://  avgt         96.656         209.918          84.207       301.684     314.164    ns/op
+  false      complex 1  avgt        139.210         273.190         518.278       411.170     595.589    ns/op
+  false      complex 3  avgt       2860.790        2943.527        5331.225                              ns/op
+  false     complex 3b  avgt       2844.848        2949.070        5802.610     11195.545     555.835    ns/op
+  false      complex 4  avgt       2671.707        3174.919        7941.012                              ns/op
