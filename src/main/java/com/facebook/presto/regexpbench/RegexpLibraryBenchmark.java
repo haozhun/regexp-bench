@@ -71,6 +71,14 @@ public class RegexpLibraryBenchmark
     }
 
     @Benchmark
+    public boolean benchmarkJavaPlusConversion(DotStarAroundData data)
+    {
+        boolean result = data.javaPattern.matcher(new String(data.sourceBytes, UTF_8)).find();
+        checkState(result == data.found);
+        return result;
+    }
+
+    @Benchmark
     public boolean benchmarkRe2jPattern(DotStarAroundData data)
     {
         boolean result = data.re2jPattern.matcher(data.sourceString).find();
